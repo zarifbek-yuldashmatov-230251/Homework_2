@@ -22,7 +22,7 @@ cout<<"Owner: "<<ownerName<<endl;
 cout<<"Balance: "<<balance<<endl;
 }
 virtual ~Account () {
-    cout<<"Account closed for "<<ownername<<endl;
+    cout<<"Account closed for "<<ownerName<<endl;
 }
 
 Account operator+(const Account &other) const {
@@ -70,7 +70,7 @@ public:
 CheckingAccount (string n, double b, double transfee):Account (n, b){
 transactionFee=transfee;
 }
-void display() {
+void display() override {
 Account::display();
     cout<<"Transaction Fee: " <<transactionFee<<endl;
 }
