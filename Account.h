@@ -9,16 +9,13 @@ protected:
     string ownerName;
     double balance;
 public:
-    Account(string name = "", double blnc = 0.0) {
-        ownerName = name;
-        balance = blnc;
-    }
+    Account(string name = "", double blnc = 0.0) : ownerName(name), balance(blnc) {}
     
-    double getBalance() const {
+    double getBalance() {
         return balance;
     }
     
-    virtual void display() const {
+    virtual void display() {
         cout << "Owner: " << ownerName << endl;
         cout << "Balance: " << balance << endl;
     }
@@ -27,15 +24,21 @@ public:
         cout << "Account closed for " << ownerName << endl;
     }
     
-    Account operator+(const Account &other) const {
-        return Account(ownerName, balance + other.balance);
+    Account operator+(const Account &other) {
+        Account temp;
+        temp.balance = this->balance + other.balance;
+        temp.ownerName = this->ownerName;
+        return temp;
     }
     
-    Account operator-(const Account &other) const {
-        return balance - other.balance;
+    Account operator-(const Account &other) {
+        Account temp;
+        temp.balance = this->balance - other.balance;
+        temp.ownerName = this->ownerName;
+        return temp;
     }
     
-    bool operator==(const Account &other) const {
+    bool operator==(const Account &other) {
         return balance == other.balance;
     }
     
@@ -56,11 +59,9 @@ private:
     double interestRate;
 public:
     SavingsAccount(string n, double b, double intrate)
-        : Account(n, b) {
-        interestRate = intrate;
-    }
+        : Account(n, b), interestRate(intrate) {}
     
-    void display() const override {
+    void display() override {
         Account::display();
         cout << "Interest Rate: " << interestRate << "%" << endl;
     }
@@ -71,11 +72,9 @@ private:
     double transactionFee;
 public:
     CheckingAccount(string n, double b, double transfee)
-        : Account(n, b) {
-        transactionFee = transfee;
-    }
+        : Account(n, b), transactionFee(transfee) {}
     
-    void display() const override {
+    void display() override {
         Account::display();
         cout << "Transaction Fee: " << transactionFee << endl;
     }
