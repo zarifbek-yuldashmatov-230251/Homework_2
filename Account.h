@@ -29,11 +29,12 @@ class SavingsAccount: public Account {
 private:
 double interestRate;
 public: 
-SavingsAccount (string n, double b, double intrate):Account (string ownername, double balance){
+SavingsAccount (string n, double b, double intrate):Account (n, b){
 interestRate=intrate;
 }
+
 void display() override {
-    Account.display();
+    Account::display();
 cout<<"Interest Rate: "<<interestRate<<"%"<<endl;
 }
 };
@@ -42,12 +43,14 @@ class CheckingAccount: public Account {
 private:
 double transactionFee;
 public: 
-CheckingAccount (string n, double b, double transfee):Account (string ownername, double balance){
+CheckingAccount (string n, double b, double transfee):Account (n, b){
 transactionFee=transfee;
 }
 void display() {
-Account.display();
+Account::display();
     cout<<"Transaction Fee: " <<transactionFee<<endl;
 }
 };
+
+
 #endif
