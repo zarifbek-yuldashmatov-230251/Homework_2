@@ -77,7 +77,7 @@ public:
     
     void display() const override {
         Account::display();
-        cout << "Transaction Fee: " << transactionFee << endl;
+        cout << "TransactionFee: " << transactionFee << endl;
     }
 };
 
