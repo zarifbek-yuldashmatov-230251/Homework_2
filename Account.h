@@ -31,7 +31,7 @@ public:
         return Account(ownerName, balance + other.balance);
     }
     
-    double operator-(const Account &other) const {
+    Account operator-(const Account &other) const {
         return balance - other.balance;
     }
     
@@ -77,7 +77,7 @@ public:
     
     void display() const override {
         Account::display();
-        cout << "TransactionFee: " << transactionFee << endl;
+        cout << "Transaction Fee: " << transactionFee << endl;
     }
 };
 
