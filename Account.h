@@ -8,8 +8,9 @@ class Account {
 protected:
 string ownerName;
 double balance;
+
 public:
-Account (string name, double blnc) {
+Account (string name = "", double blnc = 0.0) {
 ownerName=name;
 balance=blnc;
 }
@@ -23,6 +24,29 @@ cout<<"Balance: "<<balance<<endl;
 virtual ~Account () {
     cout<<"Account closed for "<<ownername<<endl;
 }
+
+Account operator+(const Account &other) const {
+return Account(ownerName, balance + other.balance);
+}
+
+double operator-(const Account &other) const {
+    return balance - other.balance;
+}
+
+bool operator==(const Account &other) const {
+    return balance == other.balance;
+}
+
+friend ostream &operator<<(ostream &out, const Account &a) {
+    out << "Owner: " << a.ownerName << endl;
+    out << "Balance: " << a.balance << endl;
+    return out;}
+
+friend istream &operator>>(istream &in, Account &a) {
+in >> a.ownerName >> a.balance;
+return in;
+}
+
 };
 
 class SavingsAccount: public Account {
